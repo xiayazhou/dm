@@ -1,0 +1,29 @@
+
+
+server:
+  port: 7201
+spring:
+  application:
+    name: dm-item-provider
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.43.14:3307/dm_item?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password:
+    type: com.zaxxer.hikari.HikariDataSource
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7766/eureka/
+
+

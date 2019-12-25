@@ -1,0 +1,30 @@
+server:
+  port: 9009
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7766/eureka/
+spring:
+  redis:
+    host: 192.168.43.14
+    port: 6379
+    password:
+    database: 0
+    lettuce:
+      pool:
+        max-active: 8 #最大连接数，负数表示无限制
+        max-wait: 10000 #最大等待ms，负数表示无限制
+        max-idle: 8 #最大空闲连接数，负数表示无限制
+        min-idle: 0 #最小空闲连接数
+      shutdown-timeout: 100
+  rabbitmq:
+    host: 192.168.43.14
+  application:
+    #注册中心实例名称
+    name: dm-duanxin
+aliyun:
+  sms:
+    accessKeyId: LTAI4FrJ6bELFYPBobp52Pai
+    accessKeySecret: 0ztJv3eXN3WyEdBDSNHn7HAOxl9UUB
+    template_code: SMS_180352571
+    sign_name: 邯郸翱翔

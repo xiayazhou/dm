@@ -1,0 +1,38 @@
+
+
+server:
+  port: 7401
+spring:
+  application:
+    name: dm-user-provider
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.43.14:3307/dm_user?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password:
+    type: com.zaxxer.hikari.HikariDataSource
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7766/eureka/
+mybatis:
+  configuration:
+    auto-mapping-behavior: full
+    map-underscore-to-camel-case: true
+    log-impl:  org.apache.ibatis.logging.stdout.StdOutImpl
+    type-aliases-package: org.xyz.dm.entity
+    mapper-locations: classpath:mapper/*Mapper.xml
+
+
+
+
