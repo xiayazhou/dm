@@ -18,7 +18,14 @@ public class DmQinziService {
 
     @PostMapping(path = "/getQinzi")
     public List<DmItem> getQinzi(@RequestParam("areaId") Integer areaId, @RequestParam("limit") Integer limit){
+//        System.out.println(areaId);
+//        System.out.println(limit);
         return dmQinziMapper.getRemen(areaId, limit);
+    }
+    //根据年龄段查询节目
+    @PostMapping(path = "/getage")
+    public List<DmItem> getage(@RequestParam("age") Integer age,@RequestParam("limit") Integer limit){
+        return dmQinziMapper.nianlin(age, limit);
     }
 
 }

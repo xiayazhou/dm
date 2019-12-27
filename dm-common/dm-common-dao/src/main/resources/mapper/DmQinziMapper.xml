@@ -3,7 +3,11 @@
 <mapper namespace="org.xyz.dm.mapper.DmQinziMapper">
 
 
+
     <select id="getRemen" resultType="org.xyz.dm.entity.DmItem">
-         select * from dm_item where cinemaId=#{areaid}
+         select * from dm_item where cinemaId=#{areaId} limit 20
+    </select>
+    <select id="nianlin" resultType="org.xyz.dm.entity.DmItem">
+        select * from dm_item where ageGroup=#{age} limit 10
     </select>
 </mapper>

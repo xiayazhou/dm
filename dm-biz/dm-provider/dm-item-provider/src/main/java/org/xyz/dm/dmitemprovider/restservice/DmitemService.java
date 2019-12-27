@@ -52,5 +52,10 @@ public class DmitemService {
     public List<DmItem> qianwuming(@RequestParam("id") Integer id){
         return dmItemRepository.qianwum(id);
     }
+    //根据id查询详情
+    @PostMapping(path = "/shangpinxq")
+    public DmItem shqngpinxq(@RequestParam("bh") Integer bh){
+        return dmItemRepository.shangpinxq(bh);
+    }
 
 }

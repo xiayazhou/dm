@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.xyz.dm.dmitemconsumer.service.DmItemTypeService;
 import org.xyz.dm.dto.CommonResponse;
+import org.xyz.dm.dto.DmDaohangDto;
 import org.xyz.dm.dto.DmItemDto;
 import org.xyz.dm.dto.DmItemTypeDto;
 import org.xyz.dm.entity.DmItemType;
@@ -25,7 +26,7 @@ public class DmItemTypeController {
         return dmItemTypeService.queryAllType();
     }
 
-    //查询
+    //所有商品分类
     @PostMapping(path = "/findid")
     public CommonResponse<List<DmItemTypeDto>> findid(){
         return dmItemTypeService.finddaoh();
@@ -41,4 +42,9 @@ public class DmItemTypeController {
 //    public CommonResponse<List<DmItemDto>> findtuijian(){
 //        return dmItemTypeService.
 //    }
+    //查询横向导航
+@PostMapping(path = "/yiji")
+    public CommonResponse<List<DmDaohangDto>> yiji(){
+        return dmItemTypeService.yiji();
+    }
 }

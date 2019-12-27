@@ -2,13 +2,12 @@ package org.xyz.dm.dmitemconsumer.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.xyz.dm.dmitemconsumer.service.DmItemService;
-import org.xyz.dm.dto.CommonResponse;
-import org.xyz.dm.dto.DmFenleiDto;
-import org.xyz.dm.dto.DmItemDto;
-import org.xyz.dm.dto.DmLoucengDto;
+import org.xyz.dm.dto.*;
 
 import java.util.List;
 
@@ -42,6 +41,17 @@ public class DmItemController {
     @PostMapping(path = "/louceng")
     public CommonResponse<List<DmLoucengDto>> louceng(){
         return dmItemService.loucengfenlei();
+    }
+    //查询每个主题的热门节目
+    @PostMapping(path = "/remen{itemTypeId}")
+    public CommonResponse<List<ButongTuijianDto>> remen(@PathVariable("itemTypeId") Integer id){
+        System.out.println("热门主题id"+id);
+        return dmItemService.findid(id);
+    }
+    //根据id查询商品
+    @PostMapping(path = "/shangpinxq")
+    public CommonResponse<JiemuXq> shangpinxq(@RequestParam("bh") Integer bh){
+        return dmItemService.shangpinxq(bh);
     }
 
 }

@@ -25,5 +25,12 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:7766/eureka/
+mybatis:
+  configuration:
+    auto-mapping-behavior: full
+    map-underscore-to-camel-case: true
+    log-impl:  org.apache.ibatis.logging.stdout.StdOutImpl
+  type-aliases-package: org.xyz.dm.entity
+  mapper-locations: classpath:mapper/*Mapper.xml
 
 

@@ -27,10 +27,22 @@ public class DmItemServiceImpl implements DmItemService {
     @Autowired
     private DmCinemaClient dmCinemaClient;
 
-
+    //查询每个主题的热门节目
     @Override
-    public List<DmItem> findid(Integer id) {
-        return dmitemClient.findid(id);
+    public CommonResponse<List<ButongTuijianDto>> findid(Integer id) {
+        List<DmItem> qianwuming = dmitemClient.qianwuming(id);
+        List<ButongTuijianDto> list=new ArrayList<>();
+        //查询城市及
+        for(DmItem item:qianwuming){
+            ButongTuijianDto butongTuijianDto=new ButongTuijianDto();
+            BeanUtils.copyProperties(item,butongTuijianDto);
+            //查询城市
+            DmCinema findnbh = dmCinemaClient.findnbh(item.getCinemaId());
+            butongTuijianDto.setAreaId(String.valueOf(findnbh.getId()));
+            butongTuijianDto.setAreaName(findnbh.getAreaName());
+            list.add(butongTuijianDto);
+        }
+        return DtoUtil.returnSuccess(list);
     }
 
 //查询推荐
@@ -92,11 +104,18 @@ public class DmItemServiceImpl implements DmItemService {
         //通过一级分类查询到所有的热门节目的前五名
         for (DmItem item:yijifenlei){
             DmLoucengDto loucengDto=new DmLoucengDto();
+            loucengDto.setFloor(item.getId());
+//            loucengDto.setItemTypeId();
+            loucengDto.setItemTypeName(item.getItemName());
+            loucengDto.setItemTypeId(item.getItemType1Id());
             List<DmItem> qianwuming = dmitemClient.qianwuming(item.getItemType1Id());
             //循环每个热门节目
             for(DmItem item1:qianwuming){
                 DmLoucengremenDto loucengremenDto=new DmLoucengremenDto();
                 BeanUtils.copyProperties(item1,loucengremenDto);
+                loucengremenDto.setMinPrice(String.valueOf(item1.getMinPrice()));
+                loucengremenDto.setEndDate(String.valueOf(item1.getEndTime()));
+                loucengremenDto.setStartDate(String.valueOf(item1.getStartTime()));
                 //查询查询城市
                 //查询城市
                 DmCinema findnbh = dmCinemaClient.findnbh(item1.getCinemaId());
@@ -109,10 +128,26 @@ public class DmItemServiceImpl implements DmItemService {
                 if (findjmid!=null){
                     loucengremenDto.setImgUrl(findjmid.getImgUrl());
                 }
-                loucengDto.getLouceng().add(loucengremenDto);
+                loucengDto.getItems().add(loucengremenDto);
             }
             list.add(loucengDto);
         }
         return DtoUtil.returnSuccess(list);
+    }
+    //根据id查询商品
+    @Override
+    public CommonResponse<JiemuXq> shangpinxq(Integer bh) {
+        DmItem shangpinxq = dmitemClient.shangpinxq(bh);
+        JiemuXq jiemuXq=new JiemuXq();
+        BeanUtils.copyProperties(shangpinxq,jiemuXq);
+        DmCinema findnbh = dmCinemaClient.findnbh(shangpinxq.getCinemaId());
+//        jiemuXq.setItemName(shangpinxq);
+        jiemuXq.setAdress(findnbh.getAddress());
+        jiemuXq.setAreaId(findnbh.getAreaId());
+        jiemuXq.setAreaName(findnbh.getAreaName());
+        jiemuXq.setCinemaId(shangpinxq.getCinemaId());
+        jiemuXq.setLatitude(shangpinxq.getLatitude());
+        jiemuXq.setLongitude(shangpinxq.getLongitude());
+        return DtoUtil.returnSuccess(jiemuXq);
     }
 }

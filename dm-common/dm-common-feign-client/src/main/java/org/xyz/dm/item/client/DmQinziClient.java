@@ -17,4 +17,8 @@ public interface DmQinziClient {
     //根据热门城市查询热门排行
     @PostMapping(path = "/getQinzi")
     List<DmItem> getQInzi(@RequestParam("areaId") Integer areaId, @RequestParam("limit") Integer limit);
+
+    //根据年龄段查询内容
+    @PostMapping(path = "/getage")
+    List<DmItem> getage(@RequestParam("age") Integer age,@RequestParam("limit") Integer limit);
 }

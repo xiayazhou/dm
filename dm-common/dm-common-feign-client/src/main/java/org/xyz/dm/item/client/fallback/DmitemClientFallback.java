@@ -44,4 +44,9 @@ public class DmitemClientFallback implements DmitemClient {
         return null;
     }
 
+    @Override
+    public DmItem shangpinxq(Integer bh) {
+        return null;
+    }
+
 }

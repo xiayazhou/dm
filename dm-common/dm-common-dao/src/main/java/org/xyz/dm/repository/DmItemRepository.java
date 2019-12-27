@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface DmItemRepository extends JpaRepository<DmItem,Integer> {
 
-    @Query("from DmItem where itemType1Id=:itemtypeid and isBanner=1 and isRecommend=1 and state=3")
+    @Query(value = "select * from dm_item where itemType1Id=:itemtypeid and isBanner=1 and isRecommend=1 and state=3 limit 5",nativeQuery = true)
     List<DmItem> findid(@Param("itemtypeid") Integer itmetypeid);
     //查询今日推荐
     @Query(value = "select * from dm_item where isRecommend=1 limit 6",nativeQuery = true)
@@ -34,5 +34,8 @@ public interface DmItemRepository extends JpaRepository<DmItem,Integer> {
     //查询热门的前五名
     @Query(value = "select * from `dm_item` where itemType1Id=:id order by avgScore desc limit 5",nativeQuery = true)
     List<DmItem> qianwum(@Param("id") Integer id);
+    //根据id查询信息
+    @Query(value = "from DmItem where id=:bh")
+    DmItem shangpinxq(@Param("bh") Integer bh);
 
 }

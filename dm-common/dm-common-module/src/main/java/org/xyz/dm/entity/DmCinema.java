@@ -1,5 +1,6 @@
 package org.xyz.dm.entity;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,6 @@ import javax.persistence.*;
 @Table(name = "dm_cinema",schema = "dm_item")
 public class DmCinema extends BaseEntity {
 
-
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
@@ -25,6 +25,7 @@ public class DmCinema extends BaseEntity {
   private Integer yLength;
   private String latitude;
   private String longitude;
+
 
 
 

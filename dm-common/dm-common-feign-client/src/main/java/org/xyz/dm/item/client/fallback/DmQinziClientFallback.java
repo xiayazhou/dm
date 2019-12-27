@@ -17,4 +17,9 @@ public class DmQinziClientFallback implements DmQinziClient {
     public List<DmItem> getQInzi(Integer areaId, Integer limit) {
         return null;
     }
+
+    @Override
+    public List<DmItem> getage(Integer age, Integer limit) {
+        return null;
+    }
 }

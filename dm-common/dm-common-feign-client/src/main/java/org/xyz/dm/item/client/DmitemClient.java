@@ -41,4 +41,8 @@ public interface DmitemClient {
     @PostMapping(path = "/qianwuming")
     List<DmItem> qianwuming(@RequestParam("id") Integer id);
 
+    //根据id查询详情
+    @PostMapping(path = "/shangpinxq")
+    DmItem shangpinxq(@RequestParam("bh") Integer bh);
+
 }

@@ -7,7 +7,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
 @EnableEurekaClient
-@MapperScan("org.xyz.dm.mapper")
+//@MapperScan("org.xyz.dm.mapper")
 public class DmItemProviderApplication {
 
     public static void main(String[] args) {

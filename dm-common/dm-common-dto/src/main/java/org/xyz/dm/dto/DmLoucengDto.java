@@ -15,5 +15,5 @@ public class DmLoucengDto {
     private Integer floor;//楼层
     private String itemTypeName;//楼层名称
     private Integer itemTypeId;//剧目分类id
-    private List<DmLoucengremenDto> louceng=new ArrayList<DmLoucengremenDto>();
+    private List<DmLoucengremenDto> items=new ArrayList<DmLoucengremenDto>();
 }
