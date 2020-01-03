@@ -1,0 +1,21 @@
+server:
+  port: 9006
+spring:
+  application:
+    name: dm-zuul
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7766/eureka/
+zuul:
+  routes:
+    dm-item-consumer:
+          path: /item/**
+  host:
+    connect-timeout-millis: 15000 #HTTP连接超时要比Hystrix的大
+    socket-timeout-millis: 60000   #socket超时
+#          serviceId: dm-item-consumer
+tokenEnable: true
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000

@@ -14,6 +14,6 @@ import java.util.List;
  */
 public interface DmItemCommentRepository extends JpaRepository<DmItemComment,Integer> {
     //根据商品id查询剧评
-    @Query(value = "from DmItemComment where itemId=:bh")
+    @Query(value = "select * from dm_item_comment where itemId=:bh limit 10",nativeQuery = true)
     List<DmItemComment> findByItemId(@Param("bh") Integer bh);
 }

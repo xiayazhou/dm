@@ -20,7 +20,7 @@ public class DmItemController {
 
 
     //查询今日推荐
-    @PostMapping(path = "/findtuijian")
+    @PostMapping(path = "/p/findtuijian")
     public CommonResponse<List<DmItemDto>> findtuijian(){
         return dmItemService.findtuijian();
     }

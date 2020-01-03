@@ -23,7 +23,7 @@ public class DmItemCommentServiceImpl implements DmItemCommentService {
 
     @Autowired
     private DmItemCommentClient dmItemCommentClient;
-
+    //根据id查询剧评
     @Override
     public CommonResponse<List<JupingDto>> findbyitem(Integer bh) {
         List<DmItemComment> finbyitemid = dmItemCommentClient.finbyitemid(bh);
